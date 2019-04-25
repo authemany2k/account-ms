@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.4.36 on 2017-12-04.
+ * Generated for Laravel 5.4.36 on 2019-04-25.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -5180,7 +5180,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $message The log message
          * @param array $context The log context
-         * @return Boolean Whether the record has been processed
+         * @return bool Whether the record has been processed
          * @static 
          */
         public static function debug($message, $context = array())
@@ -5193,7 +5193,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $message The log message
          * @param array $context The log context
-         * @return Boolean Whether the record has been processed
+         * @return bool Whether the record has been processed
          * @static 
          */
         public static function info($message, $context = array())
@@ -5206,7 +5206,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $message The log message
          * @param array $context The log context
-         * @return Boolean Whether the record has been processed
+         * @return bool Whether the record has been processed
          * @static 
          */
         public static function notice($message, $context = array())
@@ -5219,7 +5219,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $message The log message
          * @param array $context The log context
-         * @return Boolean Whether the record has been processed
+         * @return bool Whether the record has been processed
          * @static 
          */
         public static function warning($message, $context = array())
@@ -5232,7 +5232,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $message The log message
          * @param array $context The log context
-         * @return Boolean Whether the record has been processed
+         * @return bool Whether the record has been processed
          * @static 
          */
         public static function error($message, $context = array())
@@ -5245,7 +5245,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $message The log message
          * @param array $context The log context
-         * @return Boolean Whether the record has been processed
+         * @return bool Whether the record has been processed
          * @static 
          */
         public static function critical($message, $context = array())
@@ -5258,7 +5258,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $message The log message
          * @param array $context The log context
-         * @return Boolean Whether the record has been processed
+         * @return bool Whether the record has been processed
          * @static 
          */
         public static function alert($message, $context = array())
@@ -5271,7 +5271,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $message The log message
          * @param array $context The log context
-         * @return Boolean Whether the record has been processed
+         * @return bool Whether the record has been processed
          * @static 
          */
         public static function emergency($message, $context = array())
@@ -6808,7 +6808,7 @@ namespace Illuminate\Support\Facades {
          * @param array $cookies The COOKIE parameters
          * @param array $files The FILES parameters
          * @param array $server The SERVER parameters
-         * @param string|resource $content The raw body data
+         * @param string|resource|null $content The raw body data
          * @static 
          */
         public static function initialize($query = array(), $request = array(), $attributes = array(), $cookies = array(), $files = array(), $server = array(), $content = null)
@@ -6841,7 +6841,7 @@ namespace Illuminate\Support\Facades {
          * @param array $cookies The request cookies ($_COOKIE)
          * @param array $files The request files ($_FILES)
          * @param array $server The server parameters ($_SERVER)
-         * @param string $content The raw body data
+         * @param string|resource|null $content The raw body data
          * @return static 
          * @static 
          */
@@ -7488,7 +7488,7 @@ namespace Illuminate\Support\Facades {
          * Gets the mime type associated with the format.
          *
          * @param string $format The format
-         * @return string The associated mime type (null if not found)
+         * @return string|null The associated mime type (null if not found)
          * @static 
          */
         public static function getMimeType($format)
@@ -7545,8 +7545,8 @@ namespace Illuminate\Support\Facades {
          *  * _format request attribute
          *  * $default
          *
-         * @param string $default The default format
-         * @return string The request format
+         * @param string|null $default The default format
+         * @return string|null The request format
          * @static 
          */
         public static function getRequestFormat($default = 'html')
@@ -7670,7 +7670,7 @@ namespace Illuminate\Support\Facades {
          * Checks whether the method is cacheable or not.
          *
          * @see https://tools.ietf.org/html/rfc7231#section-4.2.3
-         * @return bool 
+         * @return bool True for GET and HEAD, false otherwise
          * @static 
          */
         public static function isMethodCacheable()
@@ -13438,6 +13438,18 @@ namespace Akaunting\Language {
         }
         
         /**
+         * Returns the language short code.
+         *
+         * @param string $long
+         * @return string 
+         * @static 
+         */
+        public static function getShortCode($long = 'default')
+        {
+            return \Akaunting\Language\Language::getShortCode($long);
+        }
+        
+        /**
          * Returns the language name.
          *
          * @param string $code
@@ -14411,6 +14423,17 @@ namespace Akaunting\Setting {
         }
         
         /**
+         * Get extra columns added to the rows.
+         *
+         * @return array 
+         * @static 
+         */
+        public static function getExtraColumns()
+        {
+            return \Akaunting\Setting\Drivers\Database::getExtraColumns();
+        }
+        
+        /**
          * Unset a key in the settings data.
          *
          * @param string $key
@@ -14451,7 +14474,7 @@ namespace Akaunting\Setting {
          * Determine if a key exists in the settings data.
          *
          * @param string $key
-         * @return boolean 
+         * @return bool 
          * @static 
          */
         public static function has($key)
@@ -14488,7 +14511,7 @@ namespace Akaunting\Setting {
         /**
          * Get all settings data.
          *
-         * @return array 
+         * @return array|bool 
          * @static 
          */
         public static function all()
@@ -14519,6 +14542,17 @@ namespace Akaunting\Setting {
         {
             //Method inherited from \Akaunting\Setting\Contracts\Driver            
             return \Akaunting\Setting\Drivers\Database::load($force);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function checkExtraColumns()
+        {
+            //Method inherited from \Akaunting\Setting\Contracts\Driver            
+            return \Akaunting\Setting\Drivers\Database::checkExtraColumns();
         }
         
     }         

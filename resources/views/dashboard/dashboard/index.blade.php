@@ -262,7 +262,7 @@
                         <tbody>
                             @foreach($latest_incomes as $item)
                             <tr>
-                                <td class="text-left">{{ Date::parse($item->paid_at)->format($date_format) }}</td>
+                                <td class="text-left">{{ Date::parse($item->paid_at)->format('d-m-Y H:i:s') }}</td>
                                 <td class="text-left">{{ $item->category ? $item->category->name : trans_choice('general.invoices', 2) }}</td>
                                 <td class="text-right">@money($item->amount, $item->currency_code, true)</td>
                             </tr>
