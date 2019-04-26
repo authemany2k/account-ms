@@ -224,12 +224,12 @@
                     @if ($accounts->count())
                         <table class="table table-striped">
                             <tbody>
-                                @foreach($accounts as $item)
+                            @foreach($accounts as $item)
                                 <tr>
                                     <td class="text-left">{{ $item->name }}</td>
                                     <td class="text-right">@money($item->balance, $item->currency_code, true)</td>
                                 </tr>
-                                @endforeach
+                            @endforeach
                             </tbody>
                         </table>
                     @else
@@ -251,34 +251,26 @@
                 </div>
                 <div class="box-body">
                     @if ($latest_incomes->count())
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th class="text-left">{{ trans('general.date') }}</th>
-                            <th class="text-left">{{ trans_choice('general.categories', 1) }}</th>
-                            <th class="text-right">{{ trans('general.amount') }}</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($latest_incomes as $item)
+                        <table class="table table-striped">
+                            <thead>
                             <tr>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                                <td class="text-left">{{ Date::parse($item->paid_at)->format('d-m-Y H:i:s') }}) }}</td>
-=======
-                                <td class="text-left">{{ Date::parse($item->paid_at)->format('d-m-Y H:i:s') }}</td>
->>>>>>> d233b9fdb4c76ac27303d4760f441268b0561f77
-=======
-                                <td class="text-left">{{ Date::parse($item->paid_at)->format('d-m-Y H:i:s') }}</td>
->>>>>>> d233b9fdb4c76ac27303d4760f441268b0561f77
-                                <td class="text-left">{{ $item->category ? $item->category->name : trans_choice('general.invoices', 2) }}</td>
-                                <td class="text-right">@money($item->amount, $item->currency_code, true)</td>
+                                <th class="text-left">{{ trans('general.date') }}</th>
+                                <th class="text-left">{{ trans_choice('general.categories', 1) }}</th>
+                                <th class="text-right">{{ trans('general.amount') }}</th>
                             </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($latest_incomes as $item)
+                                <tr>
+                                    <td class="text-left">{{ Date::parse($item->paid_at)->format('d-m-Y H:i:s') }}) }}</td>
+                                    <td class="text-left">{{ $item->category ? $item->category->name : trans_choice('general.invoices', 2) }}</td>
+                                    <td class="text-right">@money($item->amount, $item->currency_code, true)</td>
+                                </tr>
                             @endforeach
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
                     @else
-                    <h5 class="text-center">{{ trans('general.no_records') }}</h5>
+                        <h5 class="text-center">{{ trans('general.no_records') }}</h5>
                     @endif
                 </div>
             </div>
@@ -296,26 +288,26 @@
                 </div>
                 <div class="box-body">
                     @if ($latest_expenses->count())
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th class="text-left">{{ trans('general.date') }}</th>
-                            <th class="text-left">{{ trans_choice('general.categories', 1) }}</th>
-                            <th class="text-right">{{ trans('general.amount') }}</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($latest_expenses as $item)
+                        <table class="table table-striped">
+                            <thead>
                             <tr>
-                                <td class="text-left">{{ Date::parse($item->paid_at)->format($date_format) }}</td>
-                                <td class="text-left">{{ $item->category ? $item->category->name : trans_choice('general.bills', 2) }}</td>
-                                <td class="text-right">@money($item->amount, $item->currency_code, true)</td>
+                                <th class="text-left">{{ trans('general.date') }}</th>
+                                <th class="text-left">{{ trans_choice('general.categories', 1) }}</th>
+                                <th class="text-right">{{ trans('general.amount') }}</th>
                             </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($latest_expenses as $item)
+                                <tr>
+                                    <td class="text-left">{{ Date::parse($item->paid_at)->format($date_format) }}</td>
+                                    <td class="text-left">{{ $item->category ? $item->category->name : trans_choice('general.bills', 2) }}</td>
+                                    <td class="text-right">@money($item->amount, $item->currency_code, true)</td>
+                                </tr>
                             @endforeach
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
                     @else
-                    <h5 class="text-center">{{ trans('general.no_records') }}</h5>
+                        <h5 class="text-center">{{ trans('general.no_records') }}</h5>
                     @endif
                 </div>
             </div>
