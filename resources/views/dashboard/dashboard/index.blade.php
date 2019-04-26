@@ -263,7 +263,11 @@
                             @foreach($latest_incomes as $item)
                             <tr>
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 <td class="text-left">{{ Date::parse($item->paid_at)->format('d-m-Y H:i:s') }}) }}</td>
+=======
+                                <td class="text-left">{{ Date::parse($item->paid_at)->format('d-m-Y H:i:s') }}</td>
+>>>>>>> d233b9fdb4c76ac27303d4760f441268b0561f77
 =======
                                 <td class="text-left">{{ Date::parse($item->paid_at)->format('d-m-Y H:i:s') }}</td>
 >>>>>>> d233b9fdb4c76ac27303d4760f441268b0561f77
